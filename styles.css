@@ -76,8 +76,10 @@ nav a:hover {
 }
 
 :root {
-  --swiper-navigation-color: #800000; /* muda as setas */
-  --swiper-pagination-color: #800000; /* muda as bolinhas ativas */
+    --swiper-navigation-color: #800000;
+    /* muda as setas */
+    --swiper-pagination-color: #800000;
+    /* muda as bolinhas ativas */
 }
 
 .container {
@@ -99,7 +101,6 @@ nav a:hover {
 .swiper {
     width: 100%;
     max-width: 600px;
-    /* ajusta para não ficar gigante */
     margin: 20px auto;
 }
 
@@ -107,6 +108,7 @@ nav a:hover {
     text-align: center;
     font-style: italic;
     font-size: 1.1rem;
+    margin: -3px;
     padding: 20px;
 }
 
@@ -313,27 +315,27 @@ footer {
         position: relative;
     }
 
-.menu-icon {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: 0;
-    right: 0;
-    border-radius: 0;
-    background-color: transparent;
-    border: none;
-    height: 185px;                /* <-- ajuste aqui */                   /* remove margens extras */
-    max-height: 0;               
-    overflow: hidden;            
-    opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-}
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: 0;
+        right: 0;
+        border-radius: 0;
+        background-color: transparent;
+        border: none;
+        height: 185px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
 
-.menu-icon.active {
-    margin-bottom: -35px;
-    max-height: 300px;   /* controla abertura */
-    opacity: 1;
-}
+    .menu-icon.active {
+        margin-bottom: -35px;
+        max-height: 300px;
+        opacity: 1;
+    }
 
 
     .menu-text {
