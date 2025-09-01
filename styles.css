@@ -30,6 +30,7 @@ header h1 {
     font-size: 2.5em;
     color: #48182f;
     font-weight: bold;
+    margin-left: 15px;
     letter-spacing: 1px;
     text-align: center;
 }
@@ -38,6 +39,7 @@ header p {
     font-size: 1.2em;
     color: #7B4F4F;
     margin-bottom: 0;
+    margin-left: 14px;
     text-align: center;
     font-style: italic;
 }
