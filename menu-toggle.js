@@ -14,6 +14,10 @@ botao.addEventListener('click', function(event) {
         event.preventDefault();
         alert('Por favor, preencha todos os campos do formulário antes de enviar.');
     }
+    else if (!email.includes('@') || !email.includes('.com')) {
+        event.preventDefault();
+        alert('Por favor, insira um endereço de e-mail válido.');
+    }
     else {
         alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
         formulario.reset();
