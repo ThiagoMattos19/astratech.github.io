@@ -1,66 +1,80 @@
+// =========================
+// ELEMENTOS DOM
+// =========================
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.menu-icon');
 const items = document.querySelectorAll('.menu-icon a');
+
 const botao = document.getElementById('submit');
 const formulario = document.getElementById('form');
+
 const logo = document.getElementById('logoParceiro');
-const parceiroExpandido = document.getElementById('parceiroExpandido')
-const email_error = document.getElementById('email-error');
-const name_validate = document.querySelector('.name-validate');
-const email_validate = document.querySelector('.email-validate');
-const message_validate = document.querySelector('.message-validate');
-const message_error = document.getElementById('message-error');
-const name_error = document.getElementById('name-error');
+const parceiroExpandido = document.getElementById('parceiroExpandido');
+
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+
+const nameError = document.getElementById('name-error');
+const emailError = document.getElementById('email-error');
+const messageError = document.getElementById('message-error');
 
 
-toggle.onclick = () => {
-    menu.classList.toggle('active');
+// =========================
+// MENU TOGGLE
+// =========================
+if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            menu.classList.remove('active');
+        });
+    });
 }
 
-items.forEach(item => {
-    item.onclick = () => {
-        menu.classList.remove('active');
-    }
-});
 
+// =========================
+// FORMULÁRIO
+// =========================
+botao?.addEventListener('click', function(event) {
+    const name = formulario.name.value.trim();
+    const email = formulario.email.value.trim();
+    const message = formulario.message.value.trim();
 
-botao.addEventListener('click', function(event) {
-    const name = formulario.name.value;
-    const email = formulario.email.value;
-    const message = formulario.message.value;
-
-    // Limpar classes de erro anteriores
-    document.getElementById('name').classList.remove('invalid-field');
-    document.getElementById('email').classList.remove('invalid-email');
-    document.getElementById('message').classList.remove('invalid-field');
+    // Limpar erros anteriores
+    [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('invalid-field', 'invalid-email'));
+    [nameError, emailError, messageError].forEach(err => err.style.display = 'none');
 
     let hasError = false;
 
-    // Validar nome
-    if (name === '') {
+    if (!name) {
         event.preventDefault();
-        document.getElementById('name').classList.add('invalid-field');
+        nameInput.classList.add('invalid-field');
+        nameError.style.display = 'block';
         hasError = true;
-        name_error.style.display = 'block';
     }
 
-    if (email === '') {
+    if (!email) {
         event.preventDefault();
-        document.getElementById('email').classList.add('invalid-email');
-        email_error.style.display = 'block';
+        emailInput.classList.add('invalid-email');
+        emailError.style.display = 'block';
         hasError = true;
     } else if (!email.includes('@') || !email.includes('.com')) {
         event.preventDefault();
-        document.getElementById('email').classList.add('invalid-email');
-        email_error.style.display = 'block';
+        emailInput.classList.add('invalid-email');
+        emailError.style.display = 'block';
         hasError = true;
     }
-    if(message === '') {
+
+    if (!message) {
         event.preventDefault();
-        document.getElementById('message').classList.add('invalid-field');
-        message_error.style.display = 'block';
+        messageInput.classList.add('invalid-field');
+        messageError.style.display = 'block';
         hasError = true;
-    } 
+    }
 
     if (!hasError) {
         event.preventDefault();
@@ -69,50 +83,41 @@ botao.addEventListener('click', function(event) {
     }
 });
 
-document.getElementById('message').addEventListener('input', function() {
-    this.classList.remove('invalid-field');
-    message_error.style.display = 'none';
+// Remover erros ao digitar
+nameInput?.addEventListener('input', () => {
+    nameInput.classList.remove('invalid-field');
+    nameError.style.display = 'none';
 });
 
-document.getElementById('name').addEventListener('input', function() {
-    this.classList.remove('invalid-field');
-    name_error.style.display = 'none';
+emailInput?.addEventListener('input', () => {
+    emailInput.classList.remove('invalid-email');
+    emailError.style.display = 'none';
 });
 
-document.getElementById('email').addEventListener('input', function() {
-    this.classList.remove('invalid-email');
-    email_error.style.display = 'none';
+messageInput?.addEventListener('input', () => {
+    messageInput.classList.remove('invalid-field');
+    messageError.style.display = 'none';
 });
 
-toggle.onclick = () => {
-    menu.classList.toggle('active');
-}
 
-items.forEach(item => {
-    item.onclick = () => {
-        menu.classList.remove('active');
-    }
-});
-
+// =========================
+// SWIPER
+// =========================
 new Swiper('.swiper', {
     loop: true,
-    autoplay: {
-        delay: 3000,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: false
-    },
+    autoplay: { delay: 3000 },
+    pagination: { el: '.swiper-pagination', clickable: false },
     allowTouchMove: false
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  
+
+// =========================
+// PARCEIRO EXPANDIDO
+// =========================
+document.addEventListener('DOMContentLoaded', () => {
     if (logo && parceiroExpandido) {
-        logo .addEventListener('click', function(){
+        logo.addEventListener('click', () => {
             parceiroExpandido.classList.toggle('ativo');
         });
     }
 });
-
-
