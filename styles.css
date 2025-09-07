@@ -304,11 +304,23 @@ footer {
     align-items: center;
     width: 87%;
 }
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.linha-rosa {
+    border: none;
+    border-top: 3px solid #e9b6d1;
+    margin: 0;
+    width: 100%;
+}
 
 .menu-icon {
     margin-top: -25px;
     background-color: #d4cbc4;
     text-align: center;
+    position: sticky;
     display: flex;
     justify-content: center;
     padding-left: 12px;
@@ -404,6 +416,10 @@ footer {
 
 
 @media (max-width: 768px) {
+
+    nav{
+        position: fixed;
+    }
 
     #emailContact {
         padding: 12px;
