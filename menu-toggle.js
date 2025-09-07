@@ -5,6 +5,18 @@ const botao = document.getElementById('submit');
 const formulario = document.getElementById('form');
 const logo = document.getElementById('logoParceiro');
 const parceiroExpandido = document.getElementById('parceiroExpandido')
+const email_error = document.getElementById('email-error');
+
+
+toggle.onclick = () => {
+    menu.classList.toggle('active');
+}
+
+items.forEach(item => {
+    item.onclick = () => {
+        menu.classList.remove('active');
+    }
+});
 
 
 botao.addEventListener('click', function(event) {
@@ -18,14 +30,22 @@ botao.addEventListener('click', function(event) {
     }
     else if (!email.includes('@') || !email.includes('.com')) {
         event.preventDefault();
-        alert('Por favor, insira um endereço de e-mail válido.');
+        document.getElementById('email').classList.add('invalid-email');
+        email_error.style.display = 'block';
+
     }
     else {
+        event.preventDefault();  
         alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
         formulario.reset();
     }
 
    
+});
+
+document.getElementById('email').addEventListener('input', function() {
+    this.classList.remove('invalid-email');
+    email_error.style.display = 'none';
 });
 
 toggle.onclick = () => {
@@ -37,8 +57,6 @@ items.forEach(item => {
         menu.classList.remove('active');
     }
 });
-
-items
 
 new Swiper('.swiper', {
     loop: true,
