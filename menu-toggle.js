@@ -6,6 +6,11 @@ const formulario = document.getElementById('form');
 const logo = document.getElementById('logoParceiro');
 const parceiroExpandido = document.getElementById('parceiroExpandido')
 const email_error = document.getElementById('email-error');
+const name_validate = document.querySelector('.name-validate');
+const email_validate = document.querySelector('.email-validate');
+const message_validate = document.querySelector('.message-validate');
+const message_error = document.getElementById('message-error');
+const name_error = document.getElementById('name-error');
 
 
 toggle.onclick = () => {
@@ -24,23 +29,54 @@ botao.addEventListener('click', function(event) {
     const email = formulario.email.value;
     const message = formulario.message.value;
 
-    if (name === '' || email === '' || message === '') {
+    // Limpar classes de erro anteriores
+    document.getElementById('name').classList.remove('invalid-field');
+    document.getElementById('email').classList.remove('invalid-email');
+    document.getElementById('message').classList.remove('invalid-field');
+
+    let hasError = false;
+
+    // Validar nome
+    if (name === '') {
         event.preventDefault();
-        alert('Por favor, preencha todos os campos do formulário antes de enviar.');
+        document.getElementById('name').classList.add('invalid-field');
+        hasError = true;
+        name_error.style.display = 'block';
     }
-    else if (!email.includes('@') || !email.includes('.com')) {
+
+    if (email === '') {
         event.preventDefault();
         document.getElementById('email').classList.add('invalid-email');
         email_error.style.display = 'block';
-
+        hasError = true;
+    } else if (!email.includes('@') || !email.includes('.com')) {
+        event.preventDefault();
+        document.getElementById('email').classList.add('invalid-email');
+        email_error.style.display = 'block';
+        hasError = true;
     }
-    else {
-        event.preventDefault();  
+    if(message === '') {
+        event.preventDefault();
+        document.getElementById('message').classList.add('invalid-field');
+        message_error.style.display = 'block';
+        hasError = true;
+    } 
+
+    if (!hasError) {
+        event.preventDefault();
         alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
         formulario.reset();
     }
+});
 
-   
+document.getElementById('message').addEventListener('input', function() {
+    this.classList.remove('invalid-field');
+    message_error.style.display = 'none';
+});
+
+document.getElementById('name').addEventListener('input', function() {
+    this.classList.remove('invalid-field');
+    name_error.style.display = 'none';
 });
 
 document.getElementById('email').addEventListener('input', function() {
