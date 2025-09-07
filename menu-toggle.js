@@ -3,6 +3,8 @@ const menu = document.querySelector('.menu-icon');
 const items = document.querySelectorAll('.menu-icon a');
 const botao = document.getElementById('submit');
 const formulario = document.getElementById('form');
+const logo = document.getElementById('logoParceiro');
+const parceiroExpandido = document.getElementById('parceiroExpandido')
 
 
 botao.addEventListener('click', function(event) {
@@ -50,14 +52,13 @@ new Swiper('.swiper', {
     allowTouchMove: false
 });
 
-
 document.addEventListener('DOMContentLoaded', function() {
-    const logo = document.getElementById('logoParceiro');
-    const parceiroExpandido = document.getElementById('parceiroExpandido');
-    
+  
     if (logo && parceiroExpandido) {
         logo .addEventListener('click', function(){
             parceiroExpandido.classList.toggle('ativo');
         });
     }
 });
+
+
