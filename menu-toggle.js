@@ -25,3 +25,15 @@ new Swiper('.swiper', {
     },
     allowTouchMove: false
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const logo = document.getElementById('logoParceiro');
+    const parceiroExpandido = document.getElementById('parceiroExpandido');
+    
+    if (logo && parceiroExpandido) {
+        logo .addEventListener('click', function(){
+            parceiroExpandido.classList.toggle('ativo');
+        });
+    }
+});
