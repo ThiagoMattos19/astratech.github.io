@@ -72,9 +72,21 @@ nav a:hover {
     color: #A66B6B;
 }
 
+.invalid-email {
+    border: 2px solid #ff3b3b !important;
+    background: #fff0f0;
+}
+
 .contact-form textarea {
     resize: none;
    
+}
+
+.email-error {
+    color: #ff3b3b;
+    font-size: 0.95em;
+    margin-top: 4px;
+    display: block;
 }
 
 #emailContact {
