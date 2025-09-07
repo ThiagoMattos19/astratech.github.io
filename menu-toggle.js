@@ -1,6 +1,26 @@
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.menu-icon');
 const items = document.querySelectorAll('.menu-icon a');
+const botao = document.getElementById('submit');
+const formulario = document.getElementById('form');
+
+
+botao.addEventListener('click', function(event) {
+    const name = formulario.name.value;
+    const email = formulario.email.value;
+    const message = formulario.message.value;
+
+    if (name === '' || email === '' || message === '') {
+        event.preventDefault();
+        alert('Por favor, preencha todos os campos do formulário antes de enviar.');
+    }
+    else {
+        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+        formulario.reset();
+    }
+
+   
+});
 
 toggle.onclick = () => {
     menu.classList.toggle('active');
