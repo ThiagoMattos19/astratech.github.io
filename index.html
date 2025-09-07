@@ -104,6 +104,20 @@
                 </span>
                 <span><img class="icons" src="/imgs/location-svgrepo-com.svg" alt="Localização"> Rua Senador
                     Camará, 61 - Santa Cruz</span>
+                <div id="emailContact">
+                        <h3>Envie suas dúvidas através do formulário</h3>
+                        <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+                        <form id="form" action="https://formspree.io/f/mayvydgk" method="POST" class="contact-form">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" name="name" required>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="_replyto" required>
+
+                            <label for="message">Mensagem:</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <button id="submit" type="submit">Enviar</button>
+                        </form>
+                    </div>
             </div>
         </section>
 
@@ -121,6 +135,7 @@
 </body>
 
 </html>
+
 
 
 
