@@ -82,10 +82,30 @@ nav a:hover {
    
 }
 
+.invalid-field {
+    border: 2px solid #ff3b3b !important;
+    background: #fff0f0;
+}
+
 .email-error {
     color: #ff3b3b;
     font-size: 0.95em;
     margin-top: 4px;
+    display: block;
+}
+
+.name-error {
+    color: #ff3b3b;
+    font-size: 0.95em;
+    margin-top: 4px;
+    display: block;
+}
+
+.message-error {
+    color: #ff3b3b;
+    font-size: 0.95em;
+    margin-top: 4px;
+    margin-bottom: 10px;
     display: block;
 }
 
